@@ -1,1 +1,1 @@
-# coursera-fundamentals-skills-in-bioinformatics
+# Coursera course: Fundamentals Skills in Bioinformatics
