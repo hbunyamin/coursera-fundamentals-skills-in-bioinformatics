@@ -12,6 +12,7 @@ output: html_document
 ## Comma-separated values (CSV)
 
 Kita coba menggunakan library `here`.
+
 ```{r}
 library(here)
 
@@ -21,17 +22,14 @@ library(here)
 #setwd("~/Coursera_FSB/Module1_dgc/CODING_WEEK_1")
 
 # Menggunakan library here
-here::i_am("CODING_WEEK_1/3-dataIOCodingLecture.Rmd")
-
+here::i_am("3-dataIOCodingLecture.Rmd")
 
 # Read commands have a range of parameters to adjust to the format of the input
 # file. I like to visually separate the input to improve readability.
 
 #"~/Coursera_FSB/Module1_dgc/CODING_WEEK_1/DATA/DATA_FSB_SET_1.csv"
 
-
-
-data <- read.table("DATA/DATA_FSB_SET_1.csv", 
+data <- read.table(here::here("DATA", "DATA_FSB_SET_1.csv"), 
                    header = TRUE,
                    row.names = 1,
                    sep=',',
@@ -39,28 +37,32 @@ data <- read.table("DATA/DATA_FSB_SET_1.csv",
                    skip = 0
                   )
 dim(data)
-head(data,4)
-class(data)
+
+head(data, 5)
 
 # Skip is a useful feature in case data files have header annotations that are 
 # not marked by leading comment characters.
 
 # Notice how choosing the wrong separator leads to columns not being split up.
-data <- read.table("DATA/DATA_FSB_SET_1.csv", 
+data <- read.table(here::here("DATA", "DATA_FSB_SET_1.csv"), 
                    sep='#'
                   )
 dim(data)
 head(data)
 
+data
+
 # Shortcut: read.csv is like read.table but with csv presets
-data <- read.csv("DATA/DATA_FSB_SET_1.csv",
+data <- read.csv(here::here("DATA", "DATA_FSB_SET_1.csv"),
                  row.names = 1)
 dim(data)
 head(data)
 
+data
+
 
 # Writing is equally easy.
-outfile <- 'DATA/DATA_SET_TMP.csv'
+outfile <- here::here("DATA", "DATA_SET_TMP.csv")
 write.csv(data,
          file = outfile,
          quote = FALSE)
@@ -72,7 +74,7 @@ write.csv(data,
 ```{r}
 # Separators can be chosen freely, should not occur in the data though.
 # Comma and Tab are the most common.
-outfile <- 'DATA/DATA_SET_TMP.tsv'
+outfile <- here::here("DATA", "DATA_SET_TMP.csv")
 write.table(data,
          file = outfile,
          quote = FALSE)
@@ -81,7 +83,7 @@ data.reread <- read.table(outfile)
 dim(data.reread)
 head(data.reread)
 
-outfile <- 'DATA/DATA_SET_TMP.tsv'
+outfile <- here::here("DATA", "DATA_SET_TMP.tsv")
 write.table(data,sep = "\t",
          file = outfile,
          quote = FALSE)
@@ -95,7 +97,7 @@ head(data.reread)
 
 ```{r}
 # Let's first save our dataset as binary file.
-outfile <- 'DATA/DATA_SET_TMP.Rdata'
+outfile <-  here::here( "DATA", "DATA_SET_TMP.Rdata" )
 save(data, 
      file = outfile)
 # Now remove the data object from the work space.
@@ -105,7 +107,7 @@ rm(data)
 load(outfile)
 
 # Same with saveRDS.
-outfile <- 'DATA/DATA_SET_TMP.Rds'
+outfile <- here::here("DATA", "DATA_SET_TMP.Rds" )
 saveRDS(object = data, 
      file = outfile)
 
@@ -122,7 +124,7 @@ dim(data.reread)
 require(openxlsx)
 
 # Write our data set or list of data to xlsx
-outfile <- 'DATA/DATA_SET_TMP.xlsx'
+outfile <- here::here( "DATA", "DATA_SET_TMP.xlsx"  )
 write.xlsx(data, outfile)
 
 # Read our written data back from the Excel file
