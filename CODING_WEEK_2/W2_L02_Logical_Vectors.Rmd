@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Note that the `echo = FALSE` parameter was added to the code chunk 
 # to prevent printing of the R code that generated the plot.
 library(here)
-here::i_am("CODING_WEEK_2", "W2_L02_Logical_Vectors.Rmd")
+here::i_am("W2_L02_Logical_Vectors.Rmd")
 ```
 
 # WEEK 2 LECTURE 2. 
@@ -214,6 +214,9 @@ dim(ds1_filt)
 
 We could decide to extend this filtering to additional variables. 
 For instance, to filter outliers.
+
+
+
 
 
 
