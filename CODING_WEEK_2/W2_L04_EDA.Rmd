@@ -173,8 +173,16 @@ fviz_pca_var(pca, geom = c("point", "text"))
 # Clustering
 
 ```{r}
-# contructing a distance matrix between all sample combinations
+# constructing a distance matrix between all sample combinations
 ds2.onlyNumerical.sc <- scale(ds2.onlyNumerical, scale = TRUE, center = TRUE)
+
+# ==============
+#   BEGIN: MWE
+# ==============
+ds2.onlyNumerical.sc) 
+
+
+
 dist.by.variable  <- dist(t(ds2.onlyNumerical.sc))
 
 # Hierarchical clustering
