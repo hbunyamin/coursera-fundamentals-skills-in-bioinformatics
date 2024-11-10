@@ -16,7 +16,7 @@ e.  Initial conclusions
 # 1- Setting the environment
 
 ```{r}
-
+library(here)
 getwd()
 
 #setwd()
@@ -35,7 +35,7 @@ library(tidyverse)
 library(corrr)
 
 # Load dataset 4 A
-ds4 <- read.csv("DATA_FSB_SET_4A.csv", row.names = 1)
+ds4 <- read.csv( here::here("CODING_WEEK_2", "data", "DATA_FSB_SET_4A.csv")  , row.names = 1)
 # quick check if there are any missing values
 any(!complete.cases(ds4))
 ds4 <- as.matrix(ds4)
